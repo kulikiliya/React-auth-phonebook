@@ -12,7 +12,11 @@ export const AddForm = () => {
       .required('You must enter smt..')
       .min(3, 'Must be more than 3')
       .max(12, 'Must be less than 12'),
-    number: yup.number().required('You must enter smt..').positive().integer(),
+    number: yup
+      .number()
+      .required('You must enter smt..')
+      .positive('mustBepositive')
+      .integer(),
   });
   const dispatch = useDispatch();
   const {
@@ -21,6 +25,7 @@ export const AddForm = () => {
     formState: { errors },
   } = useForm({ mode: 'onSubmit', resolver: yupResolver(schema) });
 
+  console.log(errors.number);
   const submit = (name, number) => {
     dispatch(addContactThunk(name, number));
   };
@@ -35,7 +40,11 @@ export const AddForm = () => {
       <label>
         Phone
         <Input {...register('number')} />
-        <ErrorMessage>{errors?.number && errors.number.message}</ErrorMessage>
+        <ErrorMessage>
+          {errors?.number?.type === 'typeError'
+            ? 'edrrro'
+            : errors?.number?.message}
+        </ErrorMessage>
       </label>
 
       <Button>Add contact</Button>
