@@ -1,61 +1,41 @@
-import { useState } from 'react';
-import { FormDiv, Button, Input } from './AddForm.styled';
+import { FormDiv, Button, Input, Label, ErrorMessage } from './AddForm.styled';
 import { useDispatch } from 'react-redux';
 import { addContactThunk } from 'redux/filter/operation';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const AddForm = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const schema = yup.object({
+    name: yup
+      .string()
+      .required('You must enter smt..')
+      .min(3, 'Must be more than 3')
+      .max(12, 'Must be less than 12'),
+    number: yup.number().required('You must enter smt..').positive().integer(),
+  });
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: 'onSubmit', resolver: yupResolver(schema) });
 
-  const handleInput = e => {
-    const { name, value } = e.target;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-
-      case 'number':
-        setPhone(value);
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    dispatch(addContactThunk({ name, phone }));
-
-    setName('');
-    setPhone('');
+  const submit = (name, number) => {
+    dispatch(addContactThunk(name, number));
   };
 
   return (
-    <FormDiv onSubmit={handleSubmit}>
-      <label>
+    <FormDiv onSubmit={handleSubmit(submit)}>
+      <Label>
         Name
-        <Input
-          onChange={handleInput}
-          value={name}
-          type="text"
-          name="name"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </label>
+        <Input {...register('name')} />
+        <ErrorMessage>{errors?.name && errors.name.message}</ErrorMessage>
+      </Label>
       <label>
         Phone
-        <Input
-          onChange={handleInput}
-          value={phone}
-          type="tel"
-          name="number"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
+        <Input {...register('number')} />
+        <ErrorMessage>{errors?.number && errors.number.message}</ErrorMessage>
       </label>
 
       <Button>Add contact</Button>

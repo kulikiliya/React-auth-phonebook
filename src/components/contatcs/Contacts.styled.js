@@ -1,23 +1,43 @@
 import styled from 'styled-components';
 
 export const ContainerDiv = styled.div`
-  width: 350px;
-  margin-top: 10px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid grey;
+  margin-top: 20px;
 `;
 
 export const Ul = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-self: start;
+  list-style-type: none;
+  padding: 0;
+`;
 
-  gap: 10px;
+export const Li = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
 `;
 
 export const Button = styled.button`
-  margin-left: 10px;
+  background-color: transparent;
+  border: 2px solid #000;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  &&:hover,
+  &&:focus {
+    background-color: #000;
+    color: #fff;
+  }
+`;
+
+export const Text = styled.p`
+  margin: 0;
+`;
+
+export const Number = styled.p`
+  margin: 0;
+  margin-right: 10px;
 `;

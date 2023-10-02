@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ContainerDiv, Ul, Button } from './Contacts.styled';
+import { ContainerDiv, Ul, Button, Li, Text, Number } from './Contacts.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMyFilter } from 'redux/filter/selectors';
 import { deleteContactThunk, fetchContacts } from 'redux/filter/operation';
@@ -16,8 +16,8 @@ export const Contacts = () => {
     <ContainerDiv>
       <Ul>
         {myFilter.map(item => (
-          <li key={item.id}>
-            {item.name}: {item.phone}
+          <Li key={item.id}>
+            <Text>{item.name} : </Text> <Number>{item.number}</Number>
             <Button
               onClick={() => {
                 dispatch(deleteContactThunk(item.id));
@@ -25,7 +25,7 @@ export const Contacts = () => {
             >
               Delete
             </Button>
-          </li>
+          </Li>
         ))}
       </Ul>
     </ContainerDiv>

@@ -4,6 +4,7 @@ import {
   deleteContactThunk,
   fetchContacts,
 } from './operation';
+import { logoutThunk } from 'redux/user/opertation';
 
 const initialState = {
   contacts: {
@@ -34,6 +35,9 @@ const slice = createSlice({
         state.contacts.items = state.contacts.items.filter(
           item => item.id !== action.payload
         );
+      })
+      .addCase(logoutThunk.fulfilled, (state, action) => {
+        state.items = [];
       })
 
       .addMatcher(
