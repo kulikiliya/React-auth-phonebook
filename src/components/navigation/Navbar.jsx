@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEmail, selectIsLogin } from 'redux/user/selectors';
-import { logoutThunk } from 'redux/user/opertation';
+import { logoutThunk } from 'redux/user/operation';
 import {
   ButtonLogOut,
   Links,
@@ -27,7 +27,7 @@ export const Nav = () => {
           {!isLogin ? (
             <>
               <NavLi>
-                <Links to="/goit-react-hw-08-phonebook">Main</Links>
+                <Links to="/">Main</Links>
               </NavLi>
               <NavLi>
                 <Links to="/registration">Registration</Links>
@@ -39,7 +39,7 @@ export const Nav = () => {
           ) : (
             <>
               <NavLi>
-                <Links to="/contactbook">PhoneBook</Links>
+                <Links to="/contactBook">PhoneBook</Links>
               </NavLi>
 
               <UserEmail>{userEmail}</UserEmail>

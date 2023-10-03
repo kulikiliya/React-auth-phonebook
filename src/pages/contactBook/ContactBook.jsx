@@ -10,7 +10,7 @@ const Main = () => {
   const isLogin = useSelector(selectIsLogin);
 
   if (!isLogin) {
-    return <Navigate to="/goit-react-hw-08-phonebook" />;
+    return <Navigate to="/" />;
   }
   return (
     <>

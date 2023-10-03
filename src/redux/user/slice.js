@@ -3,7 +3,7 @@ import {
   logoutThunk,
   refreshThunk,
   registerThunk,
-} from './opertation';
+} from './operation';
 
 const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
 

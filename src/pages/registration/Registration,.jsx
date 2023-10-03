@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { registerThunk } from 'redux/user/opertation';
+import { registerThunk } from 'redux/user/operation';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {

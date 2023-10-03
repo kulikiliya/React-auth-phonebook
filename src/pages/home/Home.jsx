@@ -1,6 +1,14 @@
+import { Navigate } from 'react-router-dom';
 import { Wrapper } from './Home.styled';
+import { useSelector } from 'react-redux';
+import { selectIsLogin } from 'redux/user/selectors';
 
 const Home = () => {
+  const isLogin = useSelector(selectIsLogin);
+
+  if (isLogin) {
+    return <Navigate to="/contactBook" />;
+  }
   return (
     <>
       <Wrapper>

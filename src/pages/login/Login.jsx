@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { loginThunk } from 'redux/user/opertation';
+import { loginThunk } from 'redux/user/operation';
 import { selectIsLogin } from 'redux/user/selectors';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -39,7 +39,7 @@ const Login = () => {
     dispatch(loginThunk(data));
   };
   if (isLogin) {
-    return <Navigate to="/contactbook" />;
+    return <Navigate to="/contactBook" />;
   }
 
   return (

@@ -4,7 +4,7 @@ import {
   deleteContactThunk,
   fetchContacts,
 } from './operation';
-import { logoutThunk } from 'redux/user/opertation';
+import { logoutThunk } from 'redux/user/operation';
 
 const initialState = {
   contacts: {
