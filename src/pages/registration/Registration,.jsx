@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from 'redux/user/operation';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,6 +13,8 @@ import {
   Label,
   Text,
 } from './Registration.style';
+import { Navigate } from 'react-router-dom';
+import { selectIsLogin } from 'redux/user/selectors';
 
 const Registration = () => {
   const schema = yup.object({
@@ -37,6 +39,12 @@ const Registration = () => {
     console.log(data);
     dispatch(registerThunk(data));
   };
+  const isLogin = useSelector(selectIsLogin);
+
+  if (isLogin) {
+    return <Navigate to="/contactBook" />;
+  }
+
   return (
     <div>
       <Form onSubmit={handleSubmit(submit)}>

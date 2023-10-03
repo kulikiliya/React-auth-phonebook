@@ -1,7 +1,7 @@
 import Main from 'pages/contactBook/ContactBook';
 import Nav from 'components/navigation/Navbar';
 import React, { useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import NotFound from 'pages/notFound/NotFound';
 import Registration from 'pages/registration/Registration,';
 import Login from 'pages/login/Login';
@@ -13,12 +13,9 @@ import { refreshThunk } from 'redux/user/operation';
 export const App = () => {
   const isRefresh = useSelector(selectIsRefresh);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   useEffect(() => {
     dispatch(refreshThunk());
-    // .unwrap()
-    // .then(() => navigate('/contactBook'));
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   return !isRefresh ? (
     <>
