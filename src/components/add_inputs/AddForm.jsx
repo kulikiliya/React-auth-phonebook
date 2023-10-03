@@ -22,12 +22,14 @@ export const AddForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ mode: 'onSubmit', resolver: yupResolver(schema) });
 
   console.log(errors.number);
   const submit = (name, number) => {
     dispatch(addContactThunk(name, number));
+    reset();
   };
 
   return (

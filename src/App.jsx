@@ -1,4 +1,4 @@
-import Main from 'pages/contactBook/Main';
+import Main from 'pages/contactBook/ContactBook';
 import Nav from 'components/navigation/Navbar';
 import React, { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -17,7 +17,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(refreshThunk())
       .unwrap()
-      .then(() => navigate('/main'));
+      .then(() => navigate('/contactbook'));
   }, [dispatch, navigate]);
 
   return !isRefresh ? (
@@ -25,7 +25,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Nav />}>
           <Route path="/goit-react-hw-08-phonebook" element={<Home />} />
-          <Route path="/main" element={<Main />} />
+          <Route path="/contactbook" element={<Main />} />
 
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />

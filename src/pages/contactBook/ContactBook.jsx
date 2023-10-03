@@ -1,7 +1,7 @@
 import { Contacts } from '../../components/contatcs/Contacts';
 import { AddForm } from '../../components/add_inputs/AddForm';
 import { Filter } from '../../components/filter/Fiter';
-import { Wrapper } from './Main.styled';
+import { Wrapper } from './ContactBook.styled';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLogin } from 'redux/user/selectors';

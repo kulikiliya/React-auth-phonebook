@@ -39,7 +39,7 @@ const Login = () => {
     dispatch(loginThunk(data));
   };
   if (isLogin) {
-    return <Navigate to="/main" />;
+    return <Navigate to="/contactbook" />;
   }
 
   return (

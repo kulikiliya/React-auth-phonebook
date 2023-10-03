@@ -39,7 +39,7 @@ export const Nav = () => {
           ) : (
             <>
               <NavLi>
-                <Links to="/main">PhoneBook</Links>
+                <Links to="/contactbook">PhoneBook</Links>
               </NavLi>
 
               <UserEmail>{userEmail}</UserEmail>
